@@ -93,16 +93,38 @@ export class LoginComponent {
   processUser(action: string) {
     switch (action) {
       case 'login':
-        this.switchView('action');
-        this.actiontext = "LOGGING YOU IN, PLEASE WAIT...";
+        if(this.usernamevalue == "" || this.passwordvalue == "") {
+          console.log("Please fill in all fields");
+          return;
+        }
+        else {
+          this.switchView('action');
+          this.actiontext = "LOGGING YOU IN, PLEASE WAIT...";
+        }
         break;
       case 'register':
-        this.switchView('action');
-        this.actiontext = "REGISTERING YOU, PLEASE WAIT...";
+        if(this.registerfullnamevalue == "" || this.registerusernamevalue == "" || this.registerpasswordvalue == "" || this.registerconfirmpasswordvalue == "" || this.registeremailvalue == "") {
+          console.log("Please fill in all fields");
+          return;
+        }
+        else if(this.registerpasswordvalue != this.registerconfirmpasswordvalue) {
+          console.log("Password and confirm password does not match");
+          return;
+        }
+        else {
+          this.switchView('action');
+          this.actiontext = "REGISTERING YOU, PLEASE WAIT...";
+        }
         break;
       case 'recovery':
-        this.switchView('action');
-        this.actiontext = "SENDING RECOVERY LINK TO YOUR EMAIL, PLEASE WAIT...";
+        if(this.recoveremailvalue == "") {
+          console.log("Please fill in all fields");
+          return;
+        }
+        else {
+          this.switchView('action');
+          this.actiontext = "SENDING RECOVERY LINK TO YOUR EMAIL, PLEASE WAIT...";
+        }
         break;
       default:
         console.log("Invalid action");
