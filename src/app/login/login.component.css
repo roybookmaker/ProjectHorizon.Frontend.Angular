@@ -1,0 +1,147 @@
+#loginForm, #registerForm, #forgotPassword  {
+    background-color: #131313;
+    max-width: 300px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logoseparator {
+    color: #3498db;
+}
+
+.formheader {
+    background-color:#161616;
+    width:100%;
+    padding: 5px 0;
+    margin-bottom: 15px;
+}
+
+.formbody {
+    padding: 0 20px 20px 20px;
+}
+
+.loginheader {
+    color: #fff;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.loginlabel {
+    color: #fff;
+    font-size: 10px;
+    margin: 5px 20px 3px 10px;
+    width: calc(100% - 20px);
+    display:inline-block;
+}
+
+.logininput {
+    background-color: #111;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #1c1c1c;
+    border-radius: 100px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: center;
+    outline: none;
+}
+
+.logininput::placeholder {
+    text-align: center;
+}
+
+.loginbutton {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+    font-weight: bolder;
+}
+
+.loginbutton:hover {
+    background-color: #fff;
+    color: #111;
+}
+
+.loginbutton:active {
+    background-color: #e1e1e1;
+    color: #111;
+}
+
+.loginflagfull {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.loginflagfull:hover {
+    background-color: #fff;
+    color: #111;
+}
+
+.loginflagfull:active {
+    background-color: #e1e1e1;
+    color: #111;
+}
+
+.loginflag {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.loginflag:hover {
+    background-color: #fff;
+    color: #111;
+}
+
+.loginflag:active {
+    background-color: #fff;
+    color: #111;
+}
+
+.loginflagwarning {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+.loginflagwarning:hover {
+    background-color: #d63a30;
+}
+
+.loginflagwarning:active {
+    background-color: #c1342b;
+}
+
+.actiontext {
+    color: #fff;
+    font-size: 10px;
+}

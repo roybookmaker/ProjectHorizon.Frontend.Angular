@@ -1,0 +1,69 @@
+<div id="loginForm" *ngIf="visibilityloginstatus">
+    <div class="formheader">
+        <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.LOGIN</h5>
+    </div>
+    <div class="formbody">
+        <label class="loginlabel" for="username">USERNAME ▶</label>
+        <input id="username" class="logininput" type="text" (keyup)="restrictSymbols($event)" [(ngModel)]="usernamevalue">
+
+        <label class="loginlabel" for="password">PASSWORD ▶</label>
+        <input id="password" class="logininput" type="password" [(ngModel)]="passwordvalue">
+
+        <button class="loginbutton" (click)="LoginUser()">LOGIN</button>
+    </div>
+    <div class="formfooter">
+        <button class="loginflag" (click)="switchView('register')">REGISTER</button>
+        <button class="loginflagwarning" (click)="switchView('recovery')">FORGOT PASSWORD</button>
+    </div>
+</div>
+
+<div id="registerForm" *ngIf="visibilityregisterstatus">
+    <div class="formheader">
+        <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.REGISTER</h5>
+    </div>
+    <div class="formbody">
+        <label class="loginlabel" for="fullnameRegister">FULLNAME ▶</label>
+        <input id="fullnameRegister" class="logininput" type="text" [(ngModel)]="registerfullnamevalue">
+
+        <label class="loginlabel" for="emailRegister">EMAIL ▶</label>
+        <input id="emailRegister" class="logininput" type="email" [(ngModel)]="registeremailvalue">
+
+        <label class="loginlabel" for="usernameRegister">USERNAME ▶</label>
+        <input id="usernameRegister" class="logininput" type="text" (keyup)="restrictSymbols($event)" [(ngModel)]="registerusernamevalue">
+
+        <label class="loginlabel" for="passwordRegister">PASSWORD ▶</label>
+        <input id="passwordRegister" class="logininput" type="password" [(ngModel)]="registerpasswordvalue">
+        
+        <label class="loginlabel" for="confirmpasswordRegister">CONFIRM PASSWORD ▶</label>
+        <input id="confirmpasswordRegister" class="logininput" type="password" [(ngModel)]="registerconfirmpasswordvalue">
+        
+        <button class="loginbutton" (click)="processUser('register')">REGISTER</button>
+    </div>
+    <div class="formfooter">
+        <button class="loginflagfull" (click)="switchView('login')">BACK TO LOGIN</button>
+    </div>
+</div>
+
+<div id="forgotPassword" *ngIf="visibilityrecoverystatus">
+    <div class="formheader">
+        <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.RECOVER</h5>
+    </div>
+    <div class="formbody">
+        <label class="loginlabel" for="emailRecovery">EMAIL ▶</label>
+        <input id="emailRecovery" class="logininput" type="email" [(ngModel)]="recoveremailvalue">
+
+        <button class="loginbutton" (click)="processUser('recovery')">SEND RECOVERY LINK</button>
+    </div>
+    <div class="formfooter">
+        <button class="loginflagfull" (click)="switchView('login')">BACK TO LOGIN</button>
+    </div>
+</div>
+
+<div id="forgotPassword" *ngIf="visibilityactionstatus">
+    <div class="formheader">
+        <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.LOGGING-IN</h5>
+    </div>
+    <div class="formbody">
+        <span class="actiontext">{{actiontext}}</span>
+    </div>
+</div>
