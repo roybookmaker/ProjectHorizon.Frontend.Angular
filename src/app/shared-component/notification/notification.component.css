@@ -21,18 +21,18 @@
 }
 
 .warning {
-    background-color: #f1c40f; /* Change this color for different types */
+    background-color: #f1c40f;
     color: #000 !important;
 }
 
 .info {
-    background-color: #3498db; /* Change this color for different types */
+    background-color: #3498db;
 }
 
 .success {
-    background-color: #27ae60; /* Change this color for different types */
+    background-color: #27ae60;
 }
 
 .error {
-    background-color: #e74c3c; /* Change this color for different types */
+    background-color: #e74c3c;
 }

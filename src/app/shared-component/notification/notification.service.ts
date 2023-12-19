@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class NotificationService {
   private notifications: { message: string, type: string, id: number }[] = [];
   private idCounter: number = 0;
@@ -19,7 +20,7 @@ export class NotificationService {
 
     setTimeout(() => {
       this.removeNotification(id);
-    }, 3000); // Change this value as needed for notification display duration
+    }, 3000);
   }
 
   private removeNotification(id: number) {
