@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { RecoveryComponent } from './recovery/recovery.component'; 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { NotificationComponent } from './shared-component/notification/notification.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
