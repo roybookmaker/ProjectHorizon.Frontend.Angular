@@ -1,0 +1,8 @@
+<div class="cornerexplanation" *ngIf="isNotesVisible" (click)="onContainerClick($event)">
+    <b>{{ notes?.type }} ▶</b>
+    <hr>
+    <div class="explanationcontainer">
+        {{ notes?.message }}
+    </div>
+</div>
+<button class="devcorner" (click)="toggleNotes()">DEV NOTES</button>
