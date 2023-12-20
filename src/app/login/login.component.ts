@@ -2,13 +2,14 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
 import { LoginService } from './login.service';
 import { NotificationService } from "../shared-component/notification/notification.service";
 import { NotificationType } from "../../../libs/shared/EnumLib/genericenum";
+import { DevnotesService } from "../shared-component/devnotes/devnotes.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   visibilityloginstatus: boolean = true;
   visibilityregisterstatus: boolean = false;
   visibilityrecoverystatus: boolean = false;
@@ -25,8 +26,13 @@ export class LoginComponent {
 
   public constructor(
     public loginService: LoginService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private devnotesService: DevnotesService
   ) {}
+
+  ngOnInit(): void {
+    this.devnotesService.setNotes('this is a developer note.', 'info');
+  }
 
   LoginUser() {
     this.processUser('login');

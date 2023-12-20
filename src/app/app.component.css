@@ -52,38 +52,3 @@
 .login-nav:hover {
     background-color: #1c1c1c;
 }
-
-.cornerexplanation {
-    background-color: #111;
-    width: 50%;
-    max-width: 500px !important;
-    margin: 0;
-    padding: 10px;
-    border: 1px solid #1c1c1c;
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    color: white;
-    font-size: 11px !important;
-}
-
-.devcorner {
-    background-color: #111;
-    height: 40px;
-    margin: 0;
-    padding: 0px 10px;
-    border: 1px solid #1c1c1c;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    color: white;
-    font-size: 10px;
-}
-
-.explanationcontainer {
-    width:calc(100% - 5px);
-    padding:0 5px 0 0;
-    max-height: 300px;
-    overflow-y: scroll;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-}
