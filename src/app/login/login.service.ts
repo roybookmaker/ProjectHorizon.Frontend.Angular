@@ -8,11 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-
   constructor(private http: HttpClient) { }
 
   public loginProcess(username: string, password: string, token: string): Observable<CommandResult> {
-    console.log(username, password, token);
     const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
     const body = {
       Username: username,
@@ -20,5 +18,24 @@ export class LoginService {
       Token: token
     }
     return this.http.post<CommandResult>(`${sharedEnvirontment.baseGatewayWebApiUrl(sharedEnvirontment.login)}`, body, { headers });
+  }
+
+  public registerProcess(fullname: string, username: string, password: string, email: string): Observable<CommandResult> {
+    const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+    const body = {
+      Fullname: fullname,
+      Username: username,
+      Password: password,
+      Email: email
+    }
+    return this.http.post<CommandResult>(`${sharedEnvirontment.baseGatewayWebApiUrl(sharedEnvirontment.register)}`, body, { headers });
+  }
+
+  public recoveryProcess(email: string): Observable<CommandResult> {
+    const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
+    const body = {
+      Email: email
+    }
+    return this.http.post<CommandResult>(`${sharedEnvirontment.baseGatewayWebApiUrl(sharedEnvirontment.recovery)}`, body, { headers });
   }
 }

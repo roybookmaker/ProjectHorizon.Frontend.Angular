@@ -6,23 +6,23 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9998;
-  }
+}
   
-  .devnotes-container {
+.devnotes-container {
     position: fixed;
     bottom: 20px;
     left: 20px;
     width: 300px;
     z-index: 9999;
-  }
+}
   
-  .devnotes-content {
+.devnotes-content {
     background-color: #fff;
     padding: 20px;
     border: 1px solid #ccc;
-  }
+}
 
-  .cornerexplanation {
+.cornerexplanation {
     background-color: #111;
     max-width: 500px !important;
     margin: 0;

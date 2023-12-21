@@ -7,7 +7,7 @@ import { DevnotesService } from './devnotes.service';
   styleUrl: './devnotes.component.css'
 })
 export class DevnotesComponent implements OnInit {
-  notes: { message: string, type: string } | null = null;
+  notes: { header: string, message: string } | null = null;
   isNotesVisible: boolean = false;
 
   constructor(private devnotesService: DevnotesService) {}
@@ -23,8 +23,8 @@ export class DevnotesComponent implements OnInit {
     this.isNotesVisible = !this.isNotesVisible;
   }
 
-  setNotesMessage(message: string, type: string = 'info') {
-    this.devnotesService.setNotes(message, type);
+  setNotesMessage(header: string, message: string) {
+    this.devnotesService.setNotes(header, message);
   }
 
   onContainerClick(event: Event) {
