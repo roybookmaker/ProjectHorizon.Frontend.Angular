@@ -19,4 +19,6 @@ export class RecoveryComponent {
   recoverycodevalue: string = "";
   passwordvalue: string = "";
   confirmedpasswordvalue: string = "";
+
+  
 }

@@ -9,7 +9,7 @@
         <label class="loginlabel" for="password">PASSWORD ▶</label>
         <input id="password" class="logininput" type="password" [(ngModel)]="passwordvalue">
 
-        <button class="loginbutton" (click)="LoginUser()">LOGIN</button>
+        <button class="loginbutton" (click)="processUser('login')">LOGIN</button>
     </div>
     <div class="formfooter">
         <button class="loginflag" (click)="switchView('register')">REGISTER</button>

@@ -8,7 +8,8 @@ import { CommonModule } from '@angular/common';
 import { RecoveryComponent } from './recovery/recovery.component'; 
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationComponent } from './shared-component/notification/notification.component';
-import { DevnotesComponent } from './shared-component/devnotes/devnotes.component'
+import { DevnotesComponent } from './shared-component/devnotes/devnotes.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DevnotesComponent } from './shared-component/devnotes/devnotes.componen
     LoginComponent,
     RecoveryComponent,
     NotificationComponent,
-    DevnotesComponent
+    DevnotesComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

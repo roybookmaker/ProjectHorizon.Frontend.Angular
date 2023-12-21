@@ -1,12 +1,18 @@
 .notification {
     max-width: 500px !important;
-    padding: 10px 20px;
     color: #fff;
     transition: opacity 0.5s ease-in-out;
     font-family: 'Roboto', sans-serif;
     font-weight: lighter;
     font-size: 14px;
     margin-bottom: 10px;
+}
+
+.notificationaccent {
+    width:5px !important;
+    padding: 0 5px;
+    height: 100%;
+    background-color: #fff;
 }
 
 .notificationcontainer {
@@ -17,7 +23,7 @@
 }
 
 .notificationtextcontainer {
-    padding: 10px 60px 10px 20px;
+    padding: 10px 60px 10px 15px;
 }
 
 .warning {

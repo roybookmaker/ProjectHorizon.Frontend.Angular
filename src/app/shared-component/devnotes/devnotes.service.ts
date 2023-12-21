@@ -5,10 +5,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DevnotesService {
-  private notesSubject = new BehaviorSubject<{ message: string, type: string } | null>(null);
+  private notesSubject = new BehaviorSubject<{ header: string, message: string } | null>(null);
   notesState$ = this.notesSubject.asObservable();
 
-  setNotes(message: string, type: string = 'info') {
+  setNotes(header: string = 'info', message: string) {
     const sentences = message.split('. ');
     const formattedSentences = sentences.map(sentence => {
       const firstLetter = sentence.charAt(0).toUpperCase();
@@ -16,6 +16,6 @@ export class DevnotesService {
       return firstLetter + restOfSentence;
     });
     const formattedMessage = formattedSentences.join('. ');
-    this.notesSubject.next({ message: formattedMessage, type: type.toUpperCase() });
+    this.notesSubject.next({ header: header.toUpperCase(), message: formattedMessage });
   }
 }
