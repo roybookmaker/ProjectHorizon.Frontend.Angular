@@ -1,23 +1,23 @@
 export interface CommandResult {
-    IsSuccessful: boolean;
-    Message: string;
-    Type: string;
-    ErrorCode: number;
-    Payload: any;
-    Errors?: any;
+    isSuccessful: boolean;
+    message: string;
+    type: string;
+    errorCode: number;
+    payload: any;
+    trrors?: any;
     title?: string;
-    DocumentId?: string;
-    Content?: string;
-    FileName?: string;
-    ContentType?: string;
+    documentId?: string;
+    content?: string;
+    fileName?: string;
+    contentType?: string;
   }
   
   export interface QueryResult<T> {
-    IsSuccessful: boolean;
-    Message: string;
-    Type: string;
-    ErrorCode: number;
-    Payload: T;
+    isSuccessful: boolean;
+    message: string;
+    type: string;
+    errorCode: number;
+    payload: T;
   }
   
   export interface EditCaseSummaryCommandResult extends CommandResult {
@@ -27,28 +27,28 @@ export interface CommandResult {
   }
   
   export interface ActionResult extends CommandResult {
-    Payload: PayloadResult;
+    payload: PayloadResult;
   }
   
   export interface PayloadResult {
-    Result: any;
-    Id: number;
-    Exception: string;
-    Status: number;
-    IsCanceled: boolean;
-    IsCompleted: boolean;
-    IsCompletedSuccessfully: boolean;
-    CreationOptions: number;
-    AsyncState: string | number | boolean;
-    IsFaulted: boolean;
+    result: any;
+    id: number;
+    rxception: string;
+    status: number;
+    isCanceled: boolean;
+    isCompleted: boolean;
+    isCompletedSuccessfully: boolean;
+    creationOptions: number;
+    asyncState: string | number | boolean;
+    isFaulted: boolean;
   }
   
   export interface CommandResultGeneric<T> extends CommandResult {
-    Payload: T;
+    payload: T;
   }
   
   export interface PayloadGeneric<T> {
-    Data: T,
-    TotalRecords: number
+    data: T,
+    totalRecords: number
   }
   

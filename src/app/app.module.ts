@@ -16,9 +16,9 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     AppComponent,
     LoginComponent,
     RecoveryComponent,
+    DashboardComponent,
     NotificationComponent,
-    DevnotesComponent,
-    DashboardComponent
+    DevnotesComponent
   ],
   imports: [
     CommonModule,

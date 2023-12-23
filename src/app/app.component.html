@@ -1,10 +1,3 @@
-<div class="navigation">
-  <button class="logo-nav" [routerLink]="['/']">PROJECT<span class="logoseparator">/</span>HORIZON</button>
-  <!-- <button class="login-nav" [routerLink]="['/login']">LOGIN</button> -->
-</div>
-
-<div class="routercontainer">
-  <app-notification></app-notification>
-  <router-outlet></router-outlet>
-  <app-devnotes></app-devnotes>
-</div>
+<router-outlet></router-outlet>
+<app-notification></app-notification>
+<app-devnotes></app-devnotes>

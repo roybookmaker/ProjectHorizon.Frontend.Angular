@@ -1,7 +1,8 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoginService } from './login.service';
 import { NotificationService } from "../shared-component/notification/notification.service";
-import { NotificationType,  } from "../../../libs/shared/EnumLib/genericenum";
+import { NotificationType, GenericProcess } from "../../../libs/shared/EnumLib/genericenum";
 import { DevnotesService } from "../shared-component/devnotes/devnotes.service";
 
 @Component({
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
   public constructor(
     public loginService: LoginService,
     private notificationService: NotificationService,
-    private devnotesService: DevnotesService
+    private devnotesService: DevnotesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,22 +53,23 @@ export class LoginComponent implements OnInit {
   }
 
   switchView(action: string) {
-    //this.resetinput();
-    //this.notificationService.showNotification("Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", NotificationType.success);
     switch (action) {
       case 'login':
+        this.resetinput();
         this.visibilityloginstatus = true;
         this.visibilityregisterstatus = false;
         this.visibilityrecoverystatus = false;
         this.visibilityactionstatus = false;
         break;
       case 'register':
+        this.resetinput();
         this.visibilityloginstatus = false;
         this.visibilityregisterstatus = true;
         this.visibilityrecoverystatus = false;
         this.visibilityactionstatus = false;
         break;
       case 'recovery':
+        this.resetinput();
         this.visibilityloginstatus = false;
         this.visibilityregisterstatus = false;
         this.visibilityrecoverystatus = true;
@@ -79,6 +82,7 @@ export class LoginComponent implements OnInit {
         this.visibilityactionstatus = true;
         break;
       default:
+        this.resetinput();
         console.log("Invalid action");
         break;
     }
@@ -88,7 +92,7 @@ export class LoginComponent implements OnInit {
     switch (action) {
       case 'login':
         if (this.usernamevalue == "" || this.passwordvalue == "") {
-          this.notificationService.showNotification("Please fill in all fields", NotificationType.error);
+          this.notificationService.showNotification(GenericProcess.fillallfields, NotificationType.error);
           return;
         } else {
           this.switchView('action');
@@ -103,7 +107,7 @@ export class LoginComponent implements OnInit {
           this.registerconfirmpasswordvalue == "" ||
           this.registeremailvalue == ""
         ) {
-          this.notificationService.showNotification("Please fill in all fields", NotificationType.error);
+          this.notificationService.showNotification(GenericProcess.fillallfields, NotificationType.error);
           return;
         } else if (this.registerpasswordvalue != this.registerconfirmpasswordvalue) {
           this.notificationService.showNotification("Password and confirm password does not match", NotificationType.error);
@@ -115,7 +119,7 @@ export class LoginComponent implements OnInit {
         break;
       case 'recovery':
         if (this.recoveremailvalue == "") {
-          this.notificationService.showNotification("Please fill in all fields", NotificationType.error);
+          this.notificationService.showNotification(GenericProcess.fillallfields, NotificationType.error);
           return;
         } else {
           this.switchView('action');
@@ -136,26 +140,48 @@ export class LoginComponent implements OnInit {
     switch (destination) {
       case 'login':
         this.loginService.loginProcess(this.usernamevalue, this.passwordvalue, "").subscribe((result) => {
+          console.log(result.payload);
           if(result != null) {
-            if(result.IsSuccessful) {
-              return result.Payload;
+            console.log(result);
+            if(result.isSuccessful) {
+              console.log("Login successful.");
+              this.loginService.storeCredentials(this.usernamevalue, result.payload.token);
+              this.router.navigate(['/dashboard']);
             }
             else {
-              result.ErrorCode = result.ErrorCode == null ? 0 : result.ErrorCode;
-              this.notificationService.showNotification("Login failed.", NotificationType.error);
-              return result.ErrorCode;
+              this.notificationService.showNotification(result?.message, NotificationType.error);
+              this.switchView('login');
             }
           }
         });
         break;
       case 'register':
-        
+        this.loginService.registerProcess(this.registerfullnamevalue, this.registerusernamevalue, this.registerpasswordvalue, this.registeremailvalue).subscribe((result) => {
+          if(result != null) {
+            if(result.isSuccessful) {
+              this.notificationService.showNotification("Registration successful.", NotificationType.success);
+              this.switchView('login');
+            }
+            else {
+              this.notificationService.showNotification(result?.message, NotificationType.error);
+              this.switchView('register');
+            }
+          }
+        });
         break;
       case 'recovery':
-        
-        break;
-      default:
-        this.notificationService.showNotification("Invalid action", NotificationType.error);
+        this.loginService.recoveryProcess(this.recoveremailvalue).subscribe((result) => {
+          if(result != null) {
+            if(result.isSuccessful) {
+              this.notificationService.showNotification("Recovery link sent to your email. Please check your email.", NotificationType.success);
+              this.switchView('login');
+            }
+            else {
+              this.notificationService.showNotification(result?.message, NotificationType.error);
+              this.switchView('recovery');
+            }
+          }
+        });
         break;
     }
   }
