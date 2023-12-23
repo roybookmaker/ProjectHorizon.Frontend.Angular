@@ -4,3 +4,7 @@ export enum NotificationType {
     warning = 'warning',
     error = 'error'
 }
+
+export enum GenericProcess {
+    fillallfields = 'Please fill in all fields',
+}

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class LoginService {
   constructor(private http: HttpClient) { }
 
-  public loginProcess(username: string, password: string, token: string): Observable<CommandResult> {
+  public loginProcess(username: string, password: string, token: string = ''): Observable<CommandResult> {
     const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
     const body = {
       Username: username,
@@ -37,5 +37,10 @@ export class LoginService {
       Email: email
     }
     return this.http.post<CommandResult>(`${sharedEnvirontment.baseGatewayWebApiUrl(sharedEnvirontment.recovery)}`, body, { headers });
+  }
+
+  public storeCredentials(username: string, token: string): void {
+    localStorage.setItem('username', username);
+    localStorage.setItem('token', token);
   }
 }
