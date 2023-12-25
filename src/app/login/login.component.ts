@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   registeremailvalue: string = "";
   recoveremailvalue: string = "";
   actiontext: string = "";
+  usernameinlocalstorage: string = "";
+  tokeninlocalstorage: string = "";
 
   public constructor(
     public loginService: LoginService,
@@ -34,6 +36,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.devnotesService.setNotes('what is Project Horizon?', 'this is a developer note.');
+    this.usernameinlocalstorage = localStorage.getItem('username') || "";
+    this.tokeninlocalstorage = localStorage.getItem('token') || "";
+    if(this.usernameinlocalstorage != "" && this.tokeninlocalstorage != "") {
+      this.processaction('loginbytoken');
+    }
   }
 
   restrictSymbols(event: any) {
@@ -83,7 +90,7 @@ export class LoginComponent implements OnInit {
         break;
       default:
         this.resetinput();
-        console.log("Invalid action");
+        this.notificationService.showNotification("Invalid action", NotificationType.error);
         break;
     }
   }
@@ -138,48 +145,93 @@ export class LoginComponent implements OnInit {
 
   private processaction(destination: string) {
     switch (destination) {
-      case 'login':
-        this.loginService.loginProcess(this.usernamevalue, this.passwordvalue, "").subscribe((result) => {
-          console.log(result.payload);
-          if(result != null) {
-            console.log(result);
-            if(result.isSuccessful) {
-              console.log("Login successful.");
-              this.loginService.storeCredentials(this.usernamevalue, result.payload.token);
-              this.router.navigate(['/dashboard']);
+      case 'loginbytoken':
+        this.loginService.loginProcess(this.usernameinlocalstorage, "", this.tokeninlocalstorage).subscribe({
+          next: (result) => {
+            if(result != null) {
+              if(result.isSuccessful) {
+                this.loginService.storeCredentials(this.usernameinlocalstorage, result.payload.token);
+                setTimeout(() => {
+                  this.router.navigate(['/dashboard']);
+                }, 2000);
+              }
+              else {
+                setTimeout(() => {
+                  this.switchView('login');
+                }, 2000);
+              }
             }
-            else {
-              this.notificationService.showNotification(result?.message, NotificationType.error);
+          },
+          error: (ErrorResponse) => {
+            setTimeout(() => {
               this.switchView('login');
+            }, 2000);
+          }
+        });
+        break;
+      case 'login':
+        this.loginService.loginProcess(this.usernamevalue, this.passwordvalue, "").subscribe({
+          next: (result) => {
+            if(result != null) {
+              if(result.isSuccessful) {
+                this.loginService.storeCredentials(this.usernamevalue, result.payload.token);
+                setTimeout(() => {
+                  this.router.navigate(['/dashboard']);
+                }, 2000);
+              }
+              else {
+                this.notificationService.showNotification(result?.payload.message, NotificationType.error);
+                setTimeout(() => {
+                  this.switchView('login');
+                }, 2000);
+              }
             }
+          },
+          error: (ErrorResponse) => {
+            this.notificationService.showNotification(ErrorResponse.error.message, NotificationType.error);
+            setTimeout(() => {
+              this.switchView('login');
+            }, 2000);
           }
         });
         break;
       case 'register':
-        this.loginService.registerProcess(this.registerfullnamevalue, this.registerusernamevalue, this.registerpasswordvalue, this.registeremailvalue).subscribe((result) => {
-          if(result != null) {
-            if(result.isSuccessful) {
-              this.notificationService.showNotification("Registration successful.", NotificationType.success);
-              this.switchView('login');
+        this.loginService.registerProcess(this.registerfullnamevalue, this.registerusernamevalue, this.registerpasswordvalue, this.registeremailvalue).subscribe({
+          next: (result) => {
+            if(result != null) {
+              if(result.isSuccessful) {
+                this.notificationService.showNotification("Registration successful.", NotificationType.success);
+                this.switchView('login');
+              }
+              else {
+                this.notificationService.showNotification(result?.payload.message, NotificationType.error);
+                this.switchView('register');
+              }
             }
-            else {
-              this.notificationService.showNotification(result?.message, NotificationType.error);
-              this.switchView('register');
-            }
+          },
+          error: (ErrorResponse) => {
+            this.notificationService.showNotification(ErrorResponse.error.message, NotificationType.error);
+            this.switchView('register');
           }
         });
         break;
       case 'recovery':
-        this.loginService.recoveryProcess(this.recoveremailvalue).subscribe((result) => {
-          if(result != null) {
-            if(result.isSuccessful) {
-              this.notificationService.showNotification("Recovery link sent to your email. Please check your email.", NotificationType.success);
-              this.switchView('login');
+        this.loginService.recoveryProcess(this.recoveremailvalue).subscribe({
+          next: (result) => {
+            if(result != null) {
+              if(result.isSuccessful) {
+                this.notificationService.showNotification("Recovery link sent to your email. Please check your email.", NotificationType.success);
+                this.switchView('login');
+              }
+              else {
+                this.notificationService.showNotification(result?.payload.message, NotificationType.error);
+                this.switchView('recovery');
+              }
             }
-            else {
-              this.notificationService.showNotification(result?.message, NotificationType.error);
-              this.switchView('recovery');
-            }
+          },
+          error: (ErrorResponse) => {
+            this.notificationService.showNotification(ErrorResponse.error.message, NotificationType.error);
+            this.switchView('recovery');
           }
         });
         break;

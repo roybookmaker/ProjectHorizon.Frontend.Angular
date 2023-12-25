@@ -52,6 +52,7 @@
     width:calc(100% - 5px);
     padding:0 5px 0 0;
     max-height: 300px;
+    white-space: pre-line;
     overflow-y: scroll;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }

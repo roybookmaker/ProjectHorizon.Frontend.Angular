@@ -4,7 +4,7 @@ export interface CommandResult {
     type: string;
     errorCode: number;
     payload: any;
-    trrors?: any;
+    errors?: any;
     title?: string;
     documentId?: string;
     content?: string;

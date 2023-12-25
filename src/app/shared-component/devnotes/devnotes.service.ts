@@ -16,6 +16,6 @@ export class DevnotesService {
       return firstLetter + restOfSentence;
     });
     const formattedMessage = formattedSentences.join('. ');
-    this.notesSubject.next({ header: header.toUpperCase(), message: formattedMessage });
+    this.notesSubject.next({ header: header.toUpperCase(), message: message });
   }
 }

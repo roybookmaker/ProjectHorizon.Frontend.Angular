@@ -1,17 +1,28 @@
-<div id="loginForm">
-    <div class="formheader">
-        <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.RECOVERY</h5>
+<div class="routercontainer">
+    <div id="recoveryForm" *ngIf="visibilityformstatus">
+        <div class="formheader">
+            <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.RECOVERY</h5>
+        </div>
+        <div class="formbody">
+            <label class="loginlabel" for="recoverycode">RECOVERY CODE ▶</label>
+            <input id="recoverycode" class="logininput" type="text" [(ngModel)]="recoverycodevalue">
+    
+            <label class="loginlabel" for="password">NEW PASSWORD ▶</label>
+            <input id="password" class="logininput" type="password" [(ngModel)]="passwordvalue">
+            
+            <label class="loginlabel" for="confirmpassword">RETYPE NEW PASSWORD ▶</label>
+            <input id="confirmpassword" class="logininput" type="password" [(ngModel)]="confirmedpasswordvalue">
+    
+            <button class="loginbutton" (click)="processResetPassword()">CHANGE PASSWORD</button>
+        </div>
     </div>
-    <div class="formbody">
-        <label class="loginlabel" for="recoverycode">RECOVERY CODE ▶</label>
-        <input id="recoverycode" class="logininput" type="text" [(ngModel)]="recoverycodevalue">
-
-        <label class="loginlabel" for="password">NEW PASSWORD ▶</label>
-        <input id="password" class="logininput" type="password" [(ngModel)]="passwordvalue">
-        
-        <label class="loginlabel" for="confirmpassword">RETYPE NEW PASSWORD ▶</label>
-        <input id="confirmpassword" class="logininput" type="password" [(ngModel)]="confirmedpasswordvalue">
-
-        <button class="loginbutton">LOGIN</button>
+    
+    <div id="actionForm" *ngIf="visibilityactionstatus">
+        <div class="formheader">
+            <h5 class="loginheader">PROJECT<span class="logoseparator">/</span>HORIZON.LOGGING-IN</h5>
+        </div>
+        <div class="formbody">
+            <span class="actiontext">{{actiontext}}</span>
+        </div>
     </div>
 </div>
