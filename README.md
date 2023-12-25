@@ -1,4 +1,4 @@
-# ProjectHorizonFrontendAngular
+# Project Horizon - Frontend (Angular Ver.)
 
 This project is meant to be used as a showcase piece for my interviews. This project should go together with the backend part [Project Horizon Backend](https://github.com/roybookmaker/ProjectHorizon.Backend.NET).
 For the full list of my projects showpieces, visit [Project Horizon List](https://github.com/stars/roybookmaker/lists/project-horizon).
