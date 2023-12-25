@@ -34,6 +34,7 @@ There is a lot of features that will be implemented in this project. Some of the
 My name is Flesi Arnoldi. Seasoned developer with 9+ years of experience, consist of Backend and Frontend development, along with other type of developments like Augmented Reality, 2D game, and cross-platform software.
 I am currently working as Senior Developer at Qualysoft, working on Directorate General of Taxes Indonesia project, Core Tax Administration System (CTAS), replacing their previous system.
 For more info about this project, you can read here :
-[Qualysoft - The Digital Transformation of Indonesia’s Tax System](https://qualysoft.com/en/references/digital-transformation-indonesia-tax-system)
-[The Jakarta Post - Indonesian Finance Ministry plans to implement new core tax system in 2024](https://www.thejakartapost.com/business/2023/11/02/indonesian-finance-ministry-plans-to-implement-new-core-tax-system-in-2024.html)
+- [Qualysoft - The Digital Transformation of Indonesia’s Tax System](https://qualysoft.com/en/references/digital-transformation-indonesia-tax-system)
+- [The Jakarta Post - Indonesian Finance Ministry plans to implement new core tax system in 2024](https://www.thejakartapost.com/business/2023/11/02/indonesian-finance-ministry-plans-to-implement-new-core-tax-system-in-2024.html)
+
 If you want to know more about me, or want to talk to me, you can check my [LinkedIn](https://www.linkedin.com/in/flesi-arnoldi-7b2465211/) or [Email](flesi.arnoldi@gmail.com) me directly.
