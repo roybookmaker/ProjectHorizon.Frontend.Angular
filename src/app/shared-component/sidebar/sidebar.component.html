@@ -1,0 +1,25 @@
+<div class="sidebar">
+    <ul class="sidemenu">
+        <ng-container *ngFor="let menuItem of menuItems">
+          <li class="sidemenuoption">
+            <a *ngIf="menuItem.link; else subMenu" [routerLink]="menuItem.link">{{ menuItem.title }}</a>
+            <ng-template #subMenu>
+              <a (click)="toggleSubMenu(menuItem)">{{ menuItem.title }} <span class="moreoption">▶</span></a>
+              <ul class="sidemenu" *ngIf="menuItem.isOpen">
+                <li class="submenu" *ngFor="let subMenuItem of menuItem.subMenu">
+                  <a class="submenutext" *ngIf="subMenuItem.link" [routerLink]="subMenuItem.link">{{ subMenuItem.title }}</a>
+                  <ng-container *ngIf="subMenuItem.subMenu">
+                    <a class="submenutext" (click)="toggleSubMenu(subMenuItem)">{{ subMenuItem.title }} <span class="moreoption">▶</span></a>
+                    <ul class="sidemenu" *ngIf="subMenuItem.isOpen">
+                      <li class="lastsubmenu" *ngFor="let nestedSubMenu of subMenuItem.subMenu">
+                        <a *ngIf="nestedSubMenu.link" [routerLink]="nestedSubMenu.link">{{ nestedSubMenu.title }}</a>
+                      </li>
+                    </ul>
+                  </ng-container>
+                </li>
+              </ul>
+            </ng-template>
+          </li>
+        </ng-container>
+      </ul>
+</div>

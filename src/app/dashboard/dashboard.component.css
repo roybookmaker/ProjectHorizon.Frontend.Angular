@@ -1,0 +1,15 @@
+.bodycontainer {
+    height:100%;
+    display: flex;
+}
+
+.navbarcontainer {
+    flex: 1;
+    min-height: calc(100vh - 41px) !important;
+}
+
+.routercontainer {
+    padding:10px 15px !important;
+    flex: 4;
+    padding: 0;
+}

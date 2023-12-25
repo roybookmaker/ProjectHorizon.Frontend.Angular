@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
   constructor(private http: HttpClient) { }
-
   public loginProcess(username: string, password: string, token: string = ''): Observable<CommandResult> {
     const headers = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
     const body = {

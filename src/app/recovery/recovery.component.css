@@ -1,4 +1,11 @@
-#loginForm, #registerForm, #forgotPassword  {
+.routercontainer {
+    background-color: #111;
+    margin: 20px;
+    padding: 0;
+    width: calc(100% - 40px);
+}
+
+#recoveryForm, #actionForm {
     background-color: #131313;
     max-width: 300px;
     width: 50%;

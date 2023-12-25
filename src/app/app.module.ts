@@ -9,7 +9,9 @@ import { RecoveryComponent } from './recovery/recovery.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NotificationComponent } from './shared-component/notification/notification.component';
 import { DevnotesComponent } from './shared-component/devnotes/devnotes.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavbarComponent } from './shared-component/navbar/navbar.component';
+import { SidebarComponent } from './shared-component/sidebar/sidebar.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     RecoveryComponent,
     DashboardComponent,
     NotificationComponent,
-    DevnotesComponent
+    DevnotesComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
