@@ -11,7 +11,8 @@ import { NotificationComponent } from './shared-component/notification/notificat
 import { DevnotesComponent } from './shared-component/devnotes/devnotes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './shared-component/navbar/navbar.component';
-import { SidebarComponent } from './shared-component/sidebar/sidebar.component'
+import { SidebarComponent } from './shared-component/sidebar/sidebar.component';
+import { AccountComponent } from './account/account.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SidebarComponent } from './shared-component/sidebar/sidebar.component'
     NotificationComponent,
     DevnotesComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AccountComponent
   ],
   imports: [
     CommonModule,

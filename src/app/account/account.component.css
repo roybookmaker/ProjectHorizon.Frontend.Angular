@@ -1,0 +1,22 @@
+.bodycontainer {
+  height:100%;
+  display: flex;
+}
+
+.navbarcontainer {
+  flex: 1;
+  min-height: calc(100vh - 41px) !important;
+}
+
+.routercontainer {
+  padding:20px 25px !important;
+  flex: 4;
+  padding: 0;
+}
+
+.routerheader {
+  padding:10px 0;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
